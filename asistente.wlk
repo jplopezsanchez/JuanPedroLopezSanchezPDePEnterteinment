@@ -5,13 +5,14 @@ class Asistente {
 
     method puedeComprar(entrada)= dinero > 0
 //aca va la excepcion
-    method comprarEntrada(entrada){
-        if (self.puedeComprar(entrada)){
-            self.restarMonto(entrada)
-            historial.add(entrada)
-        }
-        
+    method comprarEntrada(entrada) {
+    if (self.puedeComprar(entrada)) {
+        self.restarMonto(entrada)
+        historial.add(entrada)
+    } else {
+        throw new Exception(message = "No le alcanza el saldo para comprar")
     }
+}
 
     
 
@@ -20,16 +21,19 @@ class Asistente {
     }
     
     method restarMonto(entrada){
-        dinero -= tipoAbono.descuento () * entrada.valorReal()
+        dinero -= entrada.valorReal() * (1 - tipoAbono.descuento())
     }
 
-    method recorrerHistorial() = historial.map({ entrada => entrada.banda() })
+    method recorrerHistorialPorBanda() = historial.map({ entrada => entrada.banda() })
 
     method totalGastado ()= historial.map({entrada=>entrada.valorReal()}).sum()
 
     method entradasCompradas() = historial.size()
 
-    method bandasAsistidas ()= self.recorrerHistorial().asSet()
+    method bandasAsistidas ()= self.recorrerHistorialPorBanda().asSet()
 
     method entradasAnioPasado()= historial.filter({entrada => entrada.fecha() >= new Date ().minusYears(1) })
+}
+class SaldoInsuficienteException inherits Exception {
+    
 }

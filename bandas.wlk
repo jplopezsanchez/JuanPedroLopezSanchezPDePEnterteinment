@@ -3,9 +3,9 @@ class Banda {
     var canon = 1000000
     
     method gastoExtra()
-    method precioReal()= self.canon() + self.gastoExtra()
+    method canonReal()= self.canon() + self.gastoExtra()
     method canon ()= canon
-    method popularidad
+    method popularidad()
 
 }
 
@@ -26,7 +26,7 @@ class BandaTrap inherits Banda{
         else return 0
     } 
 
-    override method canon ()= canon*self.popularidad()
+    override method canon ()= canon * self.popularidad()
 }
 class BandaIndie inherits Banda{
     var cantInstrumentos
@@ -36,4 +36,4 @@ class BandaIndie inherits Banda{
     override method popularidad ()= nombre.size()*3.14
     
 }
-//unicamente para que el commit quede a mi nombre
+
