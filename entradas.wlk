@@ -9,3 +9,4 @@ class Entrada{
 }
 
 //const entradaKorn = new Entrada (banda = korn, fecha=algo, impuesto = algomas)
+//unicamente para que el commit quede a mi nombre
