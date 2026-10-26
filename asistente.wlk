@@ -13,7 +13,7 @@ class Asistente {
         
     }
 
-    method totalGastado ()= historial.map({entrada=>entrada.valorReal()}).sum()
+    
 
     method bonificar(){
         tipoAbono.aplicarBonificacion()
@@ -24,7 +24,11 @@ class Asistente {
     }
 
     method recorrerHistorial() = historial.map({ entrada => entrada.banda() })
-    
+
+    method totalGastado ()= historial.map({entrada=>entrada.valorReal()}).sum()
+
+    method entradasCompradas() = historial.size()
+
     method bandasAsistidas ()= self.recorrerHistorial().asSet()
 
     method entradasAnioPasado()= historial.filter({entrada => entrada.fecha() >= new Date ().minusYears(1) })
