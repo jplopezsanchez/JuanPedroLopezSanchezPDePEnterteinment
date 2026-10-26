@@ -6,3 +6,4 @@ object vip{
         porcentaje -= 0.01
     }
 }
+//unicamente para que el commit quede a mi nombre
