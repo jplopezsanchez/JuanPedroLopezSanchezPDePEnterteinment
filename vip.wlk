@@ -1,4 +1,4 @@
-object vip {
+class Vip {
     var porcentaje = 0
 
     method descuento() = porcentaje

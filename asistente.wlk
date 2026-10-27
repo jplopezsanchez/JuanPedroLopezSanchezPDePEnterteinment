@@ -10,7 +10,7 @@ class Asistente {
         self.restarMonto(entrada)
         historial.add(entrada)
     } else {
-        throw new Exception(message = "No le alcanza el saldo para comprar")
+        throw new SaldoInsuficienteException()
     }
 }
 
@@ -35,5 +35,5 @@ class Asistente {
     method entradasAnioPasado()= historial.filter({entrada => entrada.fecha() >= new Date ().minusYears(1) })
 }
 class SaldoInsuficienteException inherits Exception {
-    
+    override method message() = "No le alcanza el saldo para comprar"
 }
